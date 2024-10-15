@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Días Vividos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input[type="date"] {
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calcula Cuántos Días Has Vivido</h1>
+        <p>Introduce tu fecha de nacimiento:</p>
+        <input type="date" id="fechaNacimiento">
+        <br>
+        <button onclick="calcularDias()">Calcular</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularDias() {
+            const fechaNacimiento = new Date(document.getElementById("fechaNacimiento").value);
+            const hoy = new Date();
+            const diferenciaTiempo = hoy - fechaNacimiento;
+            const diasVividos = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24));
+
+            if (!isNaN(diasVividos)) {
+                document.getElementById("resultado").innerHTML = `<h3>Has vivido aproximadamente ${diasVividos} días.</h3>`;
+            } else {
+                document.getElementById("resultado").innerHTML = "<h3>Por favor, introduce una fecha válida.</h3>";
+            }
+        }
+    </script>
+</body>
+</html>
